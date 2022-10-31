@@ -1,0 +1,142 @@
+:root {
+  --white: #e7e9e4;
+  --black: #242424;
+
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--black);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+main {
+  max-width: 450px;
+}
+
+img {
+  width: 100%;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* burger menu */
+
+button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+button span {
+  opacity: 1;
+  width: 2rem;
+  height: 0.25rem;
+  background: var(--white);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1%;
+}
+
+
+button[data-open='true'] span:first-child {
+  transform: rotate(45deg);
+}
+
+button[data-open='true'] span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+button[data-open='true'] span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+button[data-open='true'] span {
+  background: var(--black);
+}
+
+/* side-menu */
+
+nav.side-menu {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+  color: var(--black);
+  transform: translateX(-100%);
+  height: 100vh;
+  text-align: left;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.side-menu ul {
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+li {
+  transition: all 0.2s ease-in-out;
+}
+
+li:hover span{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+nav.side-menu[data-open='true'] {
+  opacity: 1;
+  transform: translateX(0)
+}
